@@ -5,7 +5,18 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
 
-    public Interactable interactObject; 
+    private Ray ray;
+    private RaycastHit hit;
+
+    public float rayLength = 25f;
+    public float yOffset = 1.0f;
+
+    public Camera cam; 
+
+    [SerializeField]
+    public Interactable interactObject;
+
+    public bool detectingObject = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -16,22 +27,38 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.layer == 6 && interactObject == null)
+        ray = new Ray(transform.position, fwd); 
+        Debug.DrawRay(transform.position, fwd * rayLength, Color.blue); 
+
+        if(Physics.Raycast(ray, out hit, rayLength))
         {
-            interactObject = collision.gameObject.GetComponent<Interactable>(); 
+            if(hit.transform.gameObject.GetComponent<Interactable>())
+            {
+                Debug.Log("Hit object");
+
+                interactObject = hit.transform.gameObject.GetComponent<Interactable>();
+                interactObject.intearactText.enabled = true; 
+
+                if(Input.GetKey(KeyCode.E))
+                {
+                    interactObject.Interact();
+                }
+                else
+                {
+                    interactObject.ClearHit(); 
+                }
+            }
+            else
+            {
+
+                if(interactObject != null)
+                {
+                    interactObject.ClearHit();
+                    interactObject = null; 
+                }
+            }
         }
-
-        if(interactObject != null)
-            Debug.Log("Found Interactable"); 
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        interactObject = null; 
     }
 }
