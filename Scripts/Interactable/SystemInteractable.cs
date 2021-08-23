@@ -12,7 +12,11 @@ public abstract class SystemInteractable : Interactable
         Error
     }
 
-    public float repairStatus = 600;
-    public SystemStatus currSystemStatus = SystemStatus.Fine;
-    public bool repairing = false; 
+    public enum SystemType
+    {
+        Navigation, 
+        Oxygen, 
+        Gravity
+    }
+
 }
