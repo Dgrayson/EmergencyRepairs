@@ -16,22 +16,33 @@ public class OxygenInteract : SystemInteractable
     {
         intearactText.enabled = false;
         repairing = false;
+        repairBarParent.SetActive(false);
     }
 
     public override void Interact()
     {
         repairing = true;
+
+        if(oxygenSystem.systemFailed)
+            repairBarParent.SetActive(true);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        repairBarParent = repairBarImage.transform.parent.gameObject;
+        repairBarParent.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (oxygenSystem.repairValue == 0 && repairBarImage.rectTransform.sizeDelta.x != 0)
+        {
+            repairBarImage.rectTransform.sizeDelta = new Vector2(0.0f, 0.8f);
+        }
+
+
         if (repairing && oxygenSystem.repairValue < 100 && oxygenSystem.systemFailed)
         {
             oxygenSystem.repairValue += repairSpeed * Time.deltaTime;

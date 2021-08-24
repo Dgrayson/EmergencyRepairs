@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class NavigationInteract : SystemInteractable
 {
@@ -16,22 +17,33 @@ public class NavigationInteract : SystemInteractable
     {
         intearactText.enabled = false;
         repairing = false;
+
+        repairBarParent.SetActive(false);
     }
 
     public override void Interact()
     {
         repairing = true;
+
+        if(navSystem.systemFailed)
+            repairBarParent.SetActive(true); 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        repairBarParent = repairBarImage.transform.parent.gameObject;
+        repairBarParent.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (navSystem.repairValue == 0 && repairBarImage.rectTransform.sizeDelta.x != 0)
+        {
+            repairBarImage.rectTransform.sizeDelta = new Vector2(0.0f, 0.8f);
+        }
+
         if (repairing && navSystem.repairValue < 100 && navSystem.systemFailed)
         {
             navSystem.repairValue += repairSpeed * Time.deltaTime;

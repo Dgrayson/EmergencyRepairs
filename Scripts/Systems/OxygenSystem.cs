@@ -14,5 +14,7 @@ public class OxygenSystem : ShipSystems
         Debug.Log("Oxygen Failure!");
         systemFailed = true;
         repairValue = 0;
+
+
     }
 }

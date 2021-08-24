@@ -14,4 +14,9 @@ public abstract class Interactable : MonoBehaviour
     public abstract void Interact();
 
     public abstract void ClearHit(); 
+
+    public void ClearRepairBarImage()
+    {
+        repairBarImage.rectTransform.sizeDelta = new Vector2(0.0f, 0.8f);
+    }
 }

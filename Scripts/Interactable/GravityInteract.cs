@@ -16,22 +16,33 @@ public class GravityInteract : SystemInteractable
     {
         intearactText.enabled = false;
         repairing = false;
+        repairBarParent.SetActive(false);
     }
 
     public override void Interact()
     {
         repairing = true;
+
+        if(gravSystem.systemFailed)
+            repairBarParent.SetActive(true);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         gravSystem.repairValue = 0;
+        repairBarParent = repairBarImage.transform.parent.gameObject;
+        repairBarParent.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gravSystem.repairValue == 0 && repairBarImage.rectTransform.sizeDelta.x != 0)
+        {
+            repairBarImage.rectTransform.sizeDelta = new Vector2(0.0f, 0.8f);
+        }
+
         if (repairing && gravSystem.repairValue < 100 && gravSystem.systemFailed)
         {
             gravSystem.repairValue += repairSpeed * Time.deltaTime;
