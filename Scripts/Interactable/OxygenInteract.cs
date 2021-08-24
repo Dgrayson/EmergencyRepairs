@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class OxygenInteract : SystemInteractable
 {
-    public float repairStatus = 600;
     public SystemStatus currSystemStatus = SystemStatus.Fine;
     public bool repairing = false;
     public SystemType systemType;
+
+    public OxygenSystem oxygenSystem; 
 
     float repairSpeed = 5;
 
@@ -15,29 +16,45 @@ public class OxygenInteract : SystemInteractable
     {
         intearactText.enabled = false;
         repairing = false;
+        repairBarParent.SetActive(false);
     }
 
     public override void Interact()
     {
         repairing = true;
+
+        if(oxygenSystem.systemFailed)
+            repairBarParent.SetActive(true);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        repairStatus = 0;
+        repairBarParent = repairBarImage.transform.parent.gameObject;
+        repairBarParent.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (repairing && repairStatus < 100)
+        if (oxygenSystem.repairValue == 0 && repairBarImage.rectTransform.sizeDelta.x != 0)
         {
-            repairStatus += repairSpeed * Time.deltaTime;
-            Debug.Log("Repairing " + repairStatus + "%");
+            repairBarImage.rectTransform.sizeDelta = new Vector2(0.0f, 0.8f);
+        }
 
 
-            repairBarImage.rectTransform.sizeDelta = new Vector2(6 * (repairStatus / 100), 0.8f);
+        if (repairing && oxygenSystem.repairValue < 100 && oxygenSystem.systemFailed)
+        {
+            oxygenSystem.repairValue += repairSpeed * Time.deltaTime;
+            //Debug.Log("Repairing " + repairStatus + "%");
+
+
+            repairBarImage.rectTransform.sizeDelta = new Vector2(6 * (oxygenSystem.repairValue / 100), 0.8f);
+        }
+
+        if (oxygenSystem.repairValue >= 100 && oxygenSystem.systemFailed)
+        {
+            oxygenSystem.Restoresystem();  
         }
     }
 }

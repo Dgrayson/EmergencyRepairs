@@ -6,6 +6,8 @@ public abstract class ShipSystems : MonoBehaviour
 {
     public float maxFailChance = .1f;
     public float currFailChance = .1f;
+    public float repairValue = 100.0f;
+    public float maxRepairValue = 100.0f;
     public bool systemFailed = false; 
 
     public abstract void TriggerFailure();

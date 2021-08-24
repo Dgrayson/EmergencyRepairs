@@ -4,11 +4,17 @@ public class OxygenSystem : ShipSystems
 {
     public override void Restoresystem()
     {
-        throw new System.NotImplementedException();
+        systemFailed = false;
+
+        Debug.Log("Oxygen Repaired!");
     }
 
     public override void TriggerFailure()
     {
-        Debug.Log("Oxygen Failure!"); 
+        Debug.Log("Oxygen Failure!");
+        systemFailed = true;
+        repairValue = 0;
+
+
     }
 }
