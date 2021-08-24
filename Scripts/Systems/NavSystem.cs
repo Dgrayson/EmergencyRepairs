@@ -4,12 +4,15 @@ public class NavSystem : ShipSystems
 {
     public override void Restoresystem()
     {
-        throw new System.NotImplementedException();
+        systemFailed = false;
+
+        Debug.Log("Nav System Restored");
     }
 
     public override void TriggerFailure()
     {
-        Debug.Log("Nav System Failed"); 
-       
+        Debug.Log("Nav System Failed");
+        systemFailed = true;
+        repairValue = 0;
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NavigationInteract : SystemInteractable
 {
+    public NavSystem navSystem; 
 
-    public float repairStatus = 600;
     public SystemStatus currSystemStatus = SystemStatus.Fine;
     public bool repairing = false;
     public SystemType systemType;
@@ -26,19 +26,24 @@ public class NavigationInteract : SystemInteractable
     // Start is called before the first frame update
     void Start()
     {
-        repairStatus = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (repairing && repairStatus < 100)
+        if (repairing && navSystem.repairValue < 100 && navSystem.systemFailed)
         {
-            repairStatus += repairSpeed * Time.deltaTime;
-            Debug.Log("Repairing " + repairStatus + "%");
+            navSystem.repairValue += repairSpeed * Time.deltaTime;
+            //Debug.Log("Repairing " + repairStatus + "%");
 
 
-            repairBarImage.rectTransform.sizeDelta = new Vector2(6 * (repairStatus / 100), 0.8f);
+            repairBarImage.rectTransform.sizeDelta = new Vector2(6 * (navSystem.repairValue / 100), 0.8f);
+        }
+
+        if(navSystem.repairValue >= 100 && navSystem.systemFailed)
+        {
+            navSystem.Restoresystem(); 
         }
     }
 
