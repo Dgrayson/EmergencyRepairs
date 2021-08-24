@@ -257,9 +257,10 @@ MonoBehaviour:
   maxRepairBarWidth: 6
   repairBarImage: {fileID: 8847566326013832881}
   intearactText: {fileID: 0}
-  repairStatus: 0
+  navSystem: {fileID: 0}
   currSystemStatus: 0
   repairing: 0
+  systemType: 0
 --- !u!1 &8847566325739751373
 GameObject:
   m_ObjectHideFlags: 0
