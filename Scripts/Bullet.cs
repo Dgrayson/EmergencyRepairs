@@ -22,4 +22,9 @@ public class Bullet : MonoBehaviour
 
         timer -= Time.deltaTime; 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject); 
+    }
 }

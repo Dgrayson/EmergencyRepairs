@@ -2,11 +2,12 @@
 
 public class OxygenSystem : ShipSystems
 {
+
+    public ParticleSystem sparksParticles;
     public override void Restoresystem()
     {
         systemFailed = false;
-
-        Debug.Log("Oxygen Repaired!");
+        sparksParticles.Clear(); 
     }
 
     public override void TriggerFailure()
@@ -15,6 +16,6 @@ public class OxygenSystem : ShipSystems
         systemFailed = true;
         repairValue = 0;
 
-
+        sparksParticles.Play(); 
     }
 }

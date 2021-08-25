@@ -16,7 +16,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField]
     public Interactable interactObject;
 
-    public bool detectingObject = false; 
+    public bool detectingObject = false;
 
     // Start is called before the first frame update
     void Start()

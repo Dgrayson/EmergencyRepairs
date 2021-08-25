@@ -10,6 +10,7 @@ public class NavigationInteract : SystemInteractable
     public SystemStatus currSystemStatus = SystemStatus.Fine;
     public bool repairing = false;
     public SystemType systemType;
+     
 
     float repairSpeed = 5;
 
@@ -23,6 +24,7 @@ public class NavigationInteract : SystemInteractable
 
     public override void Interact()
     {
+        repairSpeed = Player.Instance.systemRepairSpeed;
         repairing = true;
 
         if(navSystem.systemFailed)
