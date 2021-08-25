@@ -15,10 +15,11 @@ public class NavSystem : ShipSystems
             defaultLightIntensity.Add(_light.intensity); 
         }
     }
+
     public override void Restoresystem()
     {
         systemFailed = false;
-        currFailChance = currFailChance / 2.0f;
+        currFailChance = currFailChance * .2f;
         sparksParticles.Clear();
 
         var i = 0; 
@@ -42,6 +43,7 @@ public class NavSystem : ShipSystems
             _light.intensity = 0.0f; 
         }
 
-        sparksParticles.Play(); 
+        sparksParticles.Play();
+        explosionSound.Play();
     }
 }

@@ -21,6 +21,7 @@ public class GravityInteract : SystemInteractable
 
     public override void Interact()
     {
+        Player.Instance.body.velocity = Vector3.zero;
 
         repairSpeed = Player.Instance.systemRepairSpeed; 
         repairing = true;

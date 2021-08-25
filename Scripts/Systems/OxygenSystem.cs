@@ -11,7 +11,9 @@ public class OxygenSystem : ShipSystems
     public override void Restoresystem()
     {
         systemFailed = false;
-        sparksParticles.Clear(); 
+        sparksParticles.Clear();
+
+        currFailChance = currFailChance * .2f;
     }
 
     public override void TriggerFailure()
@@ -21,6 +23,7 @@ public class OxygenSystem : ShipSystems
         repairValue = 0;
 
         oxygenBarUI.rectTransform.sizeDelta = new Vector2(0, 50);
-        sparksParticles.Play(); 
+        sparksParticles.Play();
+        explosionSound.Play();
     }
 }

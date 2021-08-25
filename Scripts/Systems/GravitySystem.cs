@@ -10,7 +10,9 @@ public class GravitySystem : ShipSystems
     public override void Restoresystem()
     {
         systemFailed = false;
-        sparksParticles.Clear(); 
+        sparksParticles.Clear();
+
+        currFailChance = currFailChance * .2f;
 
         Debug.Log("Gravity Repaired");
 
@@ -25,6 +27,7 @@ public class GravitySystem : ShipSystems
         systemFailed = true;
         repairValue = 0;
         sparksParticles.Play();
+        explosionSound.Play(); 
 
         Physics.gravity = Vector3.zero;
 
