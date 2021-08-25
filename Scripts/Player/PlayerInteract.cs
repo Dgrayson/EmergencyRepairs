@@ -61,4 +61,46 @@ public class PlayerInteract : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            interactObject = collision.gameObject.GetComponent<Interactable>();
+        }
+    }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+
+            if(interactObject == null)
+                interactObject = collision.gameObject.GetComponent<Interactable>();
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                interactObject.Interact(); 
+            }
+            else
+            {
+                interactObject.ClearHit(); 
+            }
+
+            Debug.Log("Colliding with sphere");
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+
+            if (interactObject == null)
+                interactObject = collision.gameObject.GetComponent<Interactable>();
+
+            interactObject.ClearHit(); 
+            interactObject = null;
+        }
+    }
 }

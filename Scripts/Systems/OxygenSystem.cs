@@ -3,6 +3,7 @@
 public class OxygenSystem : ShipSystems
 {
 
+    public float oxygenValue = 100f; 
     public ParticleSystem sparksParticles;
     public override void Restoresystem()
     {
