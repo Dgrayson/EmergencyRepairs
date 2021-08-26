@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject deathParticles;
 
+    public int strength; 
     public float damageForce; 
 
     public AudioSource damageSound;
@@ -49,6 +50,15 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         body.AddForce(-transform.forward * damageForce, ForceMode.VelocityChange);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Player.Instance.TakeDamage(strength);
+            Player.Instance.ToggleInvuln(); 
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
