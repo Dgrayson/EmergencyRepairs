@@ -11,7 +11,16 @@ public class Enemy : MonoBehaviour
 
     public float speed;
 
-    public int health; 
+    public int health;
+
+    public Rigidbody body; 
+
+    public GameObject deathParticles;
+
+    public float damageForce; 
+
+    public AudioSource damageSound;
+    public AudioSource deathSound; 
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +31,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(Player.Instance.transform.position);
+        if(agent.isOnNavMesh)
+            agent.SetDestination(Player.Instance.transform.position);
 
         if (health <= 0)
             Die(); 
@@ -30,16 +40,28 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject); 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void TakeDamage(int damage)
     {
-        if (collision.gameObject.tag == "Bullet")
+        health -= damage;
+        body.AddForce(-transform.forward * damageForce, ForceMode.VelocityChange);
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Bullet")
         {
-            health -= 1; 
+            TakeDamage(1); 
+            damageSound.Play(); 
         }
     }
 
-
+    private void OnDestroy()
+    {
+        deathSound.Play();
+    }
 }
