@@ -8,21 +8,25 @@ public class PlayerShoot : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    [Header("Ammo Prefabs")]
     public GameObject bullet;
     public GameObject grenade; 
 
+    [Header("Ammo Speed")]
     public float bulletSpeed;
     public float grenadeSpeed;
 
+    [Header("Ammo Count")]
     public int currbulletCount;
     public int maxBulletCount; 
     public int grenadeCount; 
 
+    [Header("Ammo Timers")]
     public float currBulletTimer;
     public float maxBulletTimer = .5f;
-
     public float reloadTime; 
 
+    [Header("Ammo UI")]
     public TextMeshProUGUI ammoCountUI;
     public Image[] grenadeIcons; 
 
@@ -64,7 +68,7 @@ public class PlayerShoot : MonoBehaviour
         tempBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
 
         currbulletCount -= 1;
-        ammoCountUI.text = currbulletCount.ToString() + "/" + maxBulletCount.ToString();
+        UpdateAmmoText();
     }
 
     IEnumerator Reload()
@@ -72,7 +76,7 @@ public class PlayerShoot : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
 
         currbulletCount = maxBulletCount;
-        ammoCountUI.text = currbulletCount.ToString() + "/" + maxBulletCount.ToString(); 
+        UpdateAmmoText(); 
     }
 
     void ThrowGrenade()
@@ -84,5 +88,23 @@ public class PlayerShoot : MonoBehaviour
         grenadeCount -= 1;
 
         grenadeIcons[grenadeCount].enabled = false; 
+    }
+
+    public void RefillAmmo()
+    {
+        currbulletCount = maxBulletCount;
+        UpdateAmmoText();
+    }
+
+    public void RefillGrenade()
+    {
+        grenadeCount++;
+
+        grenadeIcons[grenadeCount].enabled = true; 
+    }
+
+    private void UpdateAmmoText()
+    {
+        ammoCountUI.text = currbulletCount.ToString() + "/" + maxBulletCount.ToString();
     }
 }
