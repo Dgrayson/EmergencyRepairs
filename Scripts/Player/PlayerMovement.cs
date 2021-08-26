@@ -13,7 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private bool moving; 
 
     [SerializeField]
-    private float rotOffset = 90.0f; 
+    private float rotOffset = 90.0f;
+
+    [SerializeField]
+    private float dashSpeed = 20; 
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +28,19 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        Debug.Log(movement);
 
-        body.AddForce(movement * moveSpeed);
+        body.velocity = movement * moveSpeed;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            Dash(movement);
+        
         RotateTowardMouse(); 
+    }
+
+    void Dash(Vector3 movement)
+    {
+        //body.velocity = movement * moveSpeed * dashSpeed; 
+        body.AddForce(movement * moveSpeed * dashSpeed, ForceMode.Impulse);
     }
 
     void RotateTowardMouse()
