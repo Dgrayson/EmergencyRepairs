@@ -21,8 +21,8 @@ public class OxygenInteract : SystemInteractable
 
     public override void Interact()
     {
-        repairSpeed = Player.Instance.systemRepairSpeed;
-        Player.Instance.body.velocity = Vector3.zero;
+        repairSpeed = Player.Instance.SystemRepairSpeed;
+        Player.Instance.Body.velocity = Vector3.zero;
         repairing = true;
 
         if(oxygenSystem.systemFailed)

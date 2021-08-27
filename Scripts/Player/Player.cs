@@ -10,18 +10,26 @@ public class Player : MonoBehaviour
 
     public static Player Instance { get { return _instance; } }
 
-    public float systemRepairSpeed = 10;
+    public float SystemRepairSpeed { get => systemRepairSpeed; set => systemRepairSpeed = value; }
+    public Rigidbody Body { get => body; set => body = value; }
 
-    public Rigidbody body;
+    private float systemRepairSpeed = 10;
+
+    private Rigidbody body;
 
     [Header("Health Settings")]
-    public float currentHealth = 100.0f;
-    public float maxHealth = 100.0f;
-    public Image healthUI;
+    [SerializeField]
+    private float currentHealth = 100.0f;
+    
+    [SerializeField]
+    private float maxHealth = 100.0f;
+    
+    [SerializeField]
+    private Image healthUI;
 
-    public bool isInvuln = false; 
-    public float invulnTimer = 3.0f;
-    public float maxInvulnTimer = 3.0f; 
+    private bool isInvuln = false; 
+    private float invulnTimer = 3.0f;
+    private float maxInvulnTimer = 3.0f; 
 
     
     // Start is called before the first frame update
@@ -30,7 +38,7 @@ public class Player : MonoBehaviour
         if (_instance == null || _instance != this)
             _instance = this;
 
-        body = GetComponent<Rigidbody>(); 
+        Body = GetComponent<Rigidbody>(); 
     }
 
     // Update is called once per frame
@@ -38,7 +46,7 @@ public class Player : MonoBehaviour
     {
         if(transform.position.y >= 4.0f)
         {
-            body.velocity = new Vector3(body.velocity.x, 0.0f, body.velocity.z);
+            Body.velocity = new Vector3(Body.velocity.x, 0.0f, Body.velocity.z);
             transform.position = new Vector3(transform.position.x, 3.999f, transform.position.z);
         }
 
@@ -56,9 +64,13 @@ public class Player : MonoBehaviour
             Die(); 
     }
 
+    private void Die()
+    {
+
+    }
     public void UpdateRepairSpeed(float repairSpeed)
     {
-        systemRepairSpeed = repairSpeed; 
+        SystemRepairSpeed = repairSpeed; 
     }
 
     public void TakeDamage(int damage)

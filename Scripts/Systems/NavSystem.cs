@@ -30,6 +30,9 @@ public class NavSystem : ShipSystems
 
             i++; 
         }
+
+        //SystemsManager.Instance.LightsOnline = true; 
+        //SystemsManager.Instance.UpdateStatus();
     }
 
     public override void TriggerFailure()
@@ -42,6 +45,9 @@ public class NavSystem : ShipSystems
         {
             _light.intensity = 0.0f; 
         }
+
+        //SystemsManager.Instance.LightsOnline = false;
+        //SystemsManager.Instance.UpdateStatus();
 
         sparksParticles.Play();
         explosionSound.Play();

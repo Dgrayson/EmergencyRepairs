@@ -24,8 +24,8 @@ public class NavigationInteract : SystemInteractable
 
     public override void Interact()
     {
-        Player.Instance.body.velocity = Vector3.zero;
-        repairSpeed = Player.Instance.systemRepairSpeed;
+        Player.Instance.Body.velocity = Vector3.zero;
+        repairSpeed = Player.Instance.SystemRepairSpeed;
         repairing = true;
 
         if(navSystem.systemFailed)

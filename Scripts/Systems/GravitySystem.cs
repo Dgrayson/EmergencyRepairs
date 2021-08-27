@@ -18,6 +18,9 @@ public class GravitySystem : ShipSystems
 
         Physics.gravity = defaultGravity;
 
+        //SystemsManager.Instance.GravityOnline = true;
+        //SystemsManager.Instance.UpdateStatus(); 
+
         Player.Instance.GetComponent<Rigidbody>().AddForce(-Vector3.up * gravityForce, ForceMode.Impulse);
     }
 
@@ -27,7 +30,10 @@ public class GravitySystem : ShipSystems
         systemFailed = true;
         repairValue = 0;
         sparksParticles.Play();
-        explosionSound.Play(); 
+        explosionSound.Play();
+
+        //SystemsManager.Instance.GravityOnline = false;
+        //SystemsManager.Instance.UpdateStatus();
 
         Physics.gravity = Vector3.zero;
 

@@ -16,6 +16,9 @@ public class OxygenSystem : ShipSystems
         sparksParticles.Clear();
 
         currFailChance = currFailChance * .2f;
+
+        //SystemsManager.Instance.LightsOnline = true;
+        //SystemsManager.Instance.UpdateStatus();
     }
 
     public override void TriggerFailure()
@@ -29,6 +32,9 @@ public class OxygenSystem : ShipSystems
         sparksParticles.Play();
         explosionSound.Play();
 
-        
+        //SystemsManager.Instance.LightsOnline = false;
+        //SystemsManager.Instance.UpdateStatus();
+
+
     }
 }

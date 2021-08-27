@@ -9,24 +9,33 @@ public class Enemy : MonoBehaviour
 
     private Player player;
 
-    public float speed;
+    [SerializeField]
+    private int health;
 
-    public int health;
+    [SerializeField]
+    private Rigidbody body; 
 
-    public Rigidbody body; 
+    [SerializeField]
+    private GameObject deathParticles;
 
-    public GameObject deathParticles;
+    [SerializeField]
+    private int strength; 
 
-    public int strength; 
-    public float damageForce; 
+    [SerializeField]
+    private float damageForce; 
 
-    public AudioSource damageSound;
-    public AudioSource deathSound; 
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource damageSound;
+
+    [SerializeField]
+    private AudioSource deathSound; 
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
