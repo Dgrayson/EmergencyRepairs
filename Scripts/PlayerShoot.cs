@@ -28,9 +28,14 @@ public class PlayerShoot : MonoBehaviour
 
     [Header("Ammo UI")]
     public TextMeshProUGUI ammoCountUI;
-    public Image[] grenadeIcons; 
+    public Image[] grenadeIcons;
 
-    void Start()
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource fireSound;
+    private AudioSource reloadSound; 
+
+void Start()
     {
 
     }
@@ -67,6 +72,7 @@ public class PlayerShoot : MonoBehaviour
 
         tempBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
 
+        fireSound.Play(); 
         currbulletCount -= 1;
         UpdateAmmoText();
     }

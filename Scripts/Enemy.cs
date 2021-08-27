@@ -61,6 +61,11 @@ public class Enemy : MonoBehaviour
         body.AddForce(-transform.forward * damageForce, ForceMode.VelocityChange);
     }
 
+    private void AttackPlayer()
+    {
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player")
