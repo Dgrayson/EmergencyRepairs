@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEngine.AI.NavMeshAgent agent;
-
     private Player player;
 
     [SerializeField]
@@ -34,16 +31,12 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(agent.isOnNavMesh)
-            agent.SetDestination(Player.Instance.transform.position);
-
         if (health <= 0)
             Die(); 
     }
@@ -59,11 +52,6 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         body.AddForce(-transform.forward * damageForce, ForceMode.VelocityChange);
-    }
-
-    private void AttackPlayer()
-    {
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -86,6 +74,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        deathSound.Play();
+        if(gameObject != null)
+            deathSound.Play();
     }
 }

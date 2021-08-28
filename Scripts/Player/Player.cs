@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float SystemRepairSpeed { get => systemRepairSpeed; set => systemRepairSpeed = value; }
     public Rigidbody Body { get => body; set => body = value; }
 
+    [SerializeField]
     private float systemRepairSpeed = 10;
 
     private Rigidbody body;

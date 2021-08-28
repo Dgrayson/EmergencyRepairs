@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 6809593000678131865}
   - component: {fileID: 6809593000678131862}
   - component: {fileID: 6809593000678131864}
+  - component: {fileID: 5622715833393513497}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -529,8 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8340deabe32c540428c05539253533f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  speed: 0
   health: 3
   body: {fileID: 6809593000678131865}
   deathParticles: {fileID: 7805337134132985119, guid: 1b894b11f7591814a8ce4eb1cd841495, type: 3}
@@ -538,3 +537,36 @@ MonoBehaviour:
   damageForce: 10
   damageSound: {fileID: 5682433009045128160}
   deathSound: {fileID: 493068044639111019}
+--- !u!114 &5622715833393513497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6809593000678131863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9ef6c874c2c9c49bf2727aa5dc7349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  inAttackRange: 0
+  attackTimer: 0
+  timeBetweenAttack: 1
+  attacked: 0
+  attackRange: 10
+  bullet: {fileID: 1335238216763020041, guid: cce32bb3a6d2f0b41ae5bd6d7d4c4bda, type: 3}
+  bulletSpeed: 10
+  systems:
+  - {fileID: 5453556233694882554, guid: adb7919e7cc239f45995e4a1892943d1, type: 3}
+  - {fileID: 8097104835309614082, guid: 3da3d662d63e11245b4a805299e81d0f, type: 3}
+  - {fileID: 9073235731387853923, guid: a0c74147791985f4db6bac71dce14621, type: 3}
+  targetSystem: {fileID: 0}
+  hackingTimer: 3
+  maxHackingTimer: 3
+  hackNum: 0
+  hackChance: 0.2
+  targetingSystem: 0

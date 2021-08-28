@@ -43,7 +43,7 @@ void Start()
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Mouse0) && currbulletCount > 0)
+        if(Input.GetKey(KeyCode.Mouse0))
         {
             if (currBulletTimer <= 0)
             {
@@ -72,9 +72,9 @@ void Start()
 
         tempBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
 
-        fireSound.Play(); 
+        //fireSound.Play(); 
         currbulletCount -= 1;
-        UpdateAmmoText();
+        //UpdateAmmoText();
     }
 
     IEnumerator Reload()
@@ -82,7 +82,7 @@ void Start()
         yield return new WaitForSeconds(reloadTime);
 
         currbulletCount = maxBulletCount;
-        UpdateAmmoText(); 
+        //UpdateAmmoText(); 
     }
 
     void ThrowGrenade()
