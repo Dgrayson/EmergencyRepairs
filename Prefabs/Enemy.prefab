@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8383720605023644049}
   - component: {fileID: 6551940233452023230}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7022376073945029828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6584259021083162400}
   - component: {fileID: 5682433009045128160}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hurt Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3073129013107912849}
   - component: {fileID: 493068044639111019}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Death Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 6809593000678131862}
   - component: {fileID: 6809593000678131864}
   - component: {fileID: 5622715833393513497}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8340deabe32c540428c05539253533f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 6809593000678131862}
   health: 3
   body: {fileID: 6809593000678131865}
   deathParticles: {fileID: 7805337134132985119, guid: 1b894b11f7591814a8ce4eb1cd841495, type: 3}
@@ -537,6 +538,7 @@ MonoBehaviour:
   damageForce: 10
   damageSound: {fileID: 5682433009045128160}
   deathSound: {fileID: 493068044639111019}
+  healthBox: {fileID: 7145508046436257971, guid: 178aab8013ceb0a47ac7e1c4d4842e3b, type: 3}
 --- !u!114 &5622715833393513497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +546,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6809593000678131863}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b9ef6c874c2c9c49bf2727aa5dc7349, type: 3}
   m_Name: 

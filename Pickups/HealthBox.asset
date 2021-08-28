@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de895bb39cd65124ba86d8d23a1d0fa8, type: 3}
   m_Name: HealthBox
   m_EditorClassIdentifier: 
-  pickupMesh: {fileID: 919132149155446097, guid: fd2730d3fb52dce4c825e54b3ac7a298, type: 3}
+  pickupMesh: {fileID: 7145508046436257971, guid: 178aab8013ceb0a47ac7e1c4d4842e3b, type: 3}
   pickupType: 0

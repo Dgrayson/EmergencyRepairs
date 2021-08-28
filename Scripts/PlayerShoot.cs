@@ -72,7 +72,7 @@ void Start()
 
         tempBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
 
-        //fireSound.Play(); 
+        fireSound.Play(); 
         currbulletCount -= 1;
         //UpdateAmmoText();
     }

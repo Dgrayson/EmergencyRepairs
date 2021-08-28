@@ -46,17 +46,17 @@ public class EnemyAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(targetingSystem)
+        /*if(targetingSystem)
         {
             MoveToSystem(); 
         }
         else
-        {
+        {*/
             if (!inAttackRange)
                 ChasePlayer();
             else
                 AttackPlayer(); 
-        }
+        //}
 
         if (attacked)
             attackTimer -= Time.deltaTime; 
@@ -107,7 +107,7 @@ public class EnemyAi : MonoBehaviour
     {
         if(attackTimer <= 0)
         {
-            //Shoot();
+            Shoot();
             attackTimer = timeBetweenAttack; 
         }
         Debug.Log("Attacking Player"); 

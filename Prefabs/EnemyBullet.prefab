@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1621162986562059701}
   - component: {fileID: 1565045173810967903}
   - component: {fileID: 184355763277902803}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14f2efde142ea1041bd279adc4424778, type: 2}
+  - {fileID: 2100000, guid: 0e7326d8cb386414797fc8e40d98d07a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

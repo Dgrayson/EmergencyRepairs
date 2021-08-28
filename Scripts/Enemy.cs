@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI; 
 
 public class Enemy : MonoBehaviour
 {
+    public NavMeshAgent agent; 
+    
     private Player player;
 
     [SerializeField]
@@ -26,7 +29,9 @@ public class Enemy : MonoBehaviour
     private AudioSource damageSound;
 
     [SerializeField]
-    private AudioSource deathSound; 
+    private AudioSource deathSound;
+
+    [SerializeField] private GameObject healthBox; 
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +42,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (agent.isOnNavMesh)
+            agent.SetDestination(Player.Instance.transform.position);
+
         if (health <= 0)
             Die(); 
     }
@@ -45,6 +53,16 @@ public class Enemy : MonoBehaviour
     {
 
         Instantiate(deathParticles, transform.position, Quaternion.identity);
+
+        if (Random.Range(0.0f, 1.0f) < 0.4f)
+        {
+            Debug.Log("SPawning health");
+            Instantiate(healthBox, transform.position, Quaternion.identity);
+        }
+
+        if (gameObject != null)
+            deathSound.Play();
+
         Destroy(gameObject); 
     }
 
@@ -74,7 +92,6 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(gameObject != null)
-            deathSound.Play();
+
     }
 }

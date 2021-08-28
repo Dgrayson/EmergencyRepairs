@@ -103,4 +103,12 @@ public class Player : MonoBehaviour
     {
         isInvuln = !isInvuln; 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "EnemyBullet")
+        {
+            TakeDamage(10); 
+        }
+    }
 }
