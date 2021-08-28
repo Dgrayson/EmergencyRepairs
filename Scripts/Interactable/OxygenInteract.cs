@@ -50,7 +50,7 @@ public class OxygenInteract : SystemInteractable
             oxygenSystem.repairValue += repairSpeed * Time.deltaTime;
 
             repairBarImage.rectTransform.sizeDelta = new Vector2(6 * (oxygenSystem.repairValue / 100), 0.8f);
-            oxygenSystem.oxygenBarUI.rectTransform.sizeDelta = new Vector2(500 * (oxygenSystem.repairValue / 100), 50.0f);
+            //oxygenSystem.oxygenBarUI.rectTransform.sizeDelta = new Vector2(500 * (oxygenSystem.repairValue / 100), 50.0f);
         }
 
         if (oxygenSystem.repairValue >= 100 && oxygenSystem.systemFailed)

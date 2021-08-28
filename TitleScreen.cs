@@ -26,4 +26,9 @@ public class TitleScreen : MonoBehaviour
     {
         Application.Quit(); 
     }
+
+    public void ToggleFullscreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen; 
+    }
 }

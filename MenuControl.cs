@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuControl : MonoBehaviour
 {
@@ -15,12 +16,18 @@ public class MenuControl : MonoBehaviour
     private GameObject pauseScreen; 
 
     [SerializeField]
-    private GameObject gameOverScreen; 
+    private GameObject gameOverScreen;
 
+    [SerializeField]
+    private TextMeshProUGUI gameOverText; 
 
     void Start()
     {
-        
+        if (_instance == null || _instance != this)
+            _instance = this; 
+
+        if (Time.timeScale != 1)
+            Time.timeScale = 1; 
     }
 
     // Update is called once per frame
@@ -44,7 +51,22 @@ public class MenuControl : MonoBehaviour
 
     public void DisplayGameOverScreen()
     {
+        Time.timeScale = 0;
+        gameOverText.text = "Game Over...";
         gameOverScreen.SetActive(true);
+    }
+
+    public void DispalyWinScreen()
+    {
+        Time.timeScale = 0;
+
+        gameOverText.text = "You Win!";
+        gameOverScreen.SetActive(true); 
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1); 
     }
 
     public void MainMenu()
