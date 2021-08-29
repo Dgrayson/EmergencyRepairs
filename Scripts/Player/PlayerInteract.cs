@@ -27,12 +27,12 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        /*Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
         ray = new Ray(transform.position, fwd); 
-        Debug.DrawRay(transform.position, fwd * rayLength, Color.blue); 
+        Debug.DrawRay(transform.position, fwd * rayLength, Color.blue); */
 
-        if(Physics.Raycast(ray, out hit, rayLength))
+        /*if(Physics.Raycast(ray, out hit, rayLength))
         {
             if(hit.transform.gameObject.GetComponent<Interactable>())
             {
@@ -59,7 +59,7 @@ public class PlayerInteract : MonoBehaviour
                     interactObject = null; 
                 }
             }
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider collision)

@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y >= 4.0f)
+        if(transform.position.y >= 6.0f)
         {
             Body.velocity = new Vector3(Body.velocity.x, 0.0f, Body.velocity.z);
             transform.position = new Vector3(transform.position.x, 3.999f, transform.position.z);

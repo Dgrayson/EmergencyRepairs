@@ -535,7 +535,7 @@ MonoBehaviour:
   body: {fileID: 6809593000678131865}
   deathParticles: {fileID: 7805337134132985119, guid: 1b894b11f7591814a8ce4eb1cd841495, type: 3}
   strength: 10
-  damageForce: 10
+  damageForce: 5
   damageSound: {fileID: 5682433009045128160}
   deathSound: {fileID: 493068044639111019}
   healthBox: {fileID: 7145508046436257971, guid: 178aab8013ceb0a47ac7e1c4d4842e3b, type: 3}
@@ -546,12 +546,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6809593000678131863}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b9ef6c874c2c9c49bf2727aa5dc7349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 6809593000678131862}
   playerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -559,7 +559,7 @@ MonoBehaviour:
   attackTimer: 0
   timeBetweenAttack: 1
   attacked: 0
-  attackRange: 10
+  attackRange: 20
   bullet: {fileID: 1335238216763020041, guid: cce32bb3a6d2f0b41ae5bd6d7d4c4bda, type: 3}
   bulletSpeed: 10
   systems:

@@ -42,8 +42,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (agent.isOnNavMesh)
-            agent.SetDestination(Player.Instance.transform.position);
+        /*if (agent.isOnNavMesh)
+            agent.SetDestination(Player.Instance.transform.position);*/ 
 
         if (health <= 0)
             Die(); 
@@ -63,12 +63,15 @@ public class Enemy : MonoBehaviour
         if (gameObject != null)
             deathSound.Play();
 
+        EnemyWaves.Instance.totalEnemies.Remove(this.gameObject); 
+
         Destroy(gameObject); 
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+        body.velocity = Vector3.zero; 
         body.AddForce(-transform.forward * damageForce, ForceMode.VelocityChange);
     }
 

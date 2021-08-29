@@ -8,35 +8,37 @@ public class EnemySpawner : MonoBehaviour
     public float xOffset;
     public float zOffset;
 
-    public float timer; 
+    public float timer;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemies();
-        ResetTimer(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime; 
-
-        if(timer <= 0)
-        {
-            SpawnEnemies();
-            ResetTimer(); 
-        }
     }
 
-    public void SpawnEnemies()
+    public List<GameObject> SpawnEnemies(int min, int max)
     {
-        int numEnemies = Random.Range(1, 6);
+        List<GameObject> enemies = new List<GameObject>(); 
+
+        int numEnemies = Random.Range(min, max);
 
         for (int i = 0; i < numEnemies; i++) {
             Vector3 pos = new Vector3(Random.Range(transform.position.x - xOffset, transform.position.x + xOffset), transform.position.y, Random.Range(transform.position.z - zOffset, transform.position.z + zOffset));
-            Instantiate(enemy, pos, Quaternion.identity);
+            enemies.Add(Instantiate(enemy, pos, Quaternion.identity));
         }
+
+        return enemies;
+    }
+
+    public void SpawnSmallerWave()
+    {
+
     }
 
     private void ResetTimer()
